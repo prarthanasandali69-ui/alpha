@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a192f">
+  <meta name="description" content="Private member library for Primex Global trading recordings.">
+  <title>Primex Global — Trading Education & Signals</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { navy: '#0A192F', panel: '#0D203B', royal: '#1D4ED8', electric: '#38BDF8' }, fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] } } } };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{color-scheme:dark;--bg:#0a192f;--panel:#0d203b;--line:rgba(148,183,225,.13);--muted:#91a4bf;--cyan:#38bdf8}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:#eef5ff;font-family:'DM Sans',sans-serif}h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif}
+    .page-bg{background-color:#07162f;background-image:linear-gradient(180deg,rgba(5,17,38,.62) 0%,rgba(5,17,38,.78) 45%,rgba(5,17,38,.9) 100%);background-size:cover;background-position:center top;background-repeat:no-repeat;background-attachment:fixed}
+    .glass{background:linear-gradient(145deg,rgba(17,39,69,.86),rgba(11,29,53,.78));border:1px solid var(--line);box-shadow:0 18px 50px rgba(0,0,0,.16);backdrop-filter:blur(16px)}
+    .card{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}.card:hover{transform:translateY(-5px);border-color:rgba(56,189,248,.4);box-shadow:0 24px 55px rgba(0,0,0,.32)}
+    .thumb{background-size:cover;background-position:center;position:relative;overflow:hidden}.thumb:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(5,16,31,.02) 30%,rgba(5,16,31,.7))}
+    .play{box-shadow:0 0 0 9px rgba(56,189,248,.14);transition:transform .2s ease,box-shadow .2s ease}.card:hover .play{transform:scale(1.1);box-shadow:0 0 0 13px rgba(56,189,248,.1)}
+    .filter-btn{transition:all .2s ease}.filter-btn.active{background:#1d4ed8;color:white;border-color:#3b82f6;box-shadow:0 6px 20px rgba(29,78,216,.24)}
+    .field{width:100%;background:#08172b;border:1px solid rgba(148,183,225,.18);border-radius:12px;padding:12px 14px;color:white;outline:none;transition:border .2s}.field:focus{border-color:#38bdf8;box-shadow:0 0 0 3px rgba(56,189,248,.1)}
+    .modal-backdrop{background:rgba(2,8,18,.82);backdrop-filter:blur(9px)}
+    .intro-reveal{animation:introReveal .9s cubic-bezier(.2,.8,.2,1) both}.intro-reveal.delay-1{animation-delay:.12s}.intro-reveal.delay-2{animation-delay:.24s}
+    @keyframes introReveal{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}50%{transform:translateY(-7px)}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+    @media(max-width:640px){.page-bg{background-attachment:scroll}.hero-grid{background-position:60% center}.nav-link{font-size:12px}}
+  </style>
+</head>
+<body class="page-bg min-h-screen">
+  <header class="sticky top-0 z-40 border-b border-white/[.07] bg-[#08172b]/85 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8">
+      <a href="#home" class="flex items-center gap-3" aria-label="Primex Global home">
+        <span class="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 shadow-lg shadow-blue-900/40"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 17.5 8.2 12l3.3 3.1L20.5 6" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 6h5v5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span><span class="block display text-[15px] font-bold tracking-tight text-white">PRIMEX <span class="text-sky-400">GLOBAL</span></span><span class="block text-[10px] font-semibold uppercase tracking-[.2em] text-slate-500">VIP Trading community</span></span>
+      </a>
+      <nav class="hidden items-center gap-8 md:flex" aria-label="Main navigation"><a class="nav-link text-sm text-slate-300 transition hover:text-white" href="#home">Home</a><a class="nav-link text-sm text-slate-300 transition hover:text-white" href="#recordings">Video recordings</a><a class="nav-link text-sm text-slate-300 transition hover:text-white" href="#packages">Packages</a><a class="nav-link text-sm text-slate-300 transition hover:text-white" href="#about">About</a></nav>
+      <div class="flex items-center gap-2"><span class="hidden items-center gap-1.5 rounded-full border border-emerald-400/20 bg-emerald-400/[.08] px-3 py-2 text-[11px] font-semibold text-emerald-300 sm:flex"><span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span> VIP MEMBER ACCESS</span><a href="#recordings" class="rounded-lg border border-white/10 px-3 py-2 text-xs font-semibold text-slate-300 transition hover:border-sky-400/40 hover:text-white">Enter code</a></div>
+    </div>
+    <div class="flex justify-center gap-5 border-t border-white/[.05] px-3 py-2 md:hidden"><a class="nav-link text-xs text-slate-400" href="#home">Home</a><a class="nav-link text-xs text-slate-400" href="#recordings">Videos</a><a class="nav-link text-xs text-slate-400" href="#packages">Packages</a><a class="nav-link text-xs text-slate-400" href="#about">About</a></div>
+  </header>
+
+  <main>
+    <section id="home" class="mx-auto max-w-7xl px-4 pb-12 pt-12 sm:px-6 sm:pb-16 sm:pt-20 lg:px-8">
+      <div class="hero-grid relative overflow-hidden rounded-[28px] border border-white/[.08] bg-[#0c2040] px-6 py-10 sm:px-10 sm:py-14 lg:px-16 lg:py-16">
+        <div class="absolute inset-0 opacity-40" style="background-image:linear-gradient(110deg,#0c2040 4%,rgba(12,32,64,.93) 45%,rgba(12,32,64,.28) 100%);background-size:cover;background-position:center"></div>
+        <div class="absolute -right-14 -top-20 h-72 w-72 rounded-full bg-blue-600/20 blur-[90px]"></div>
+        <div class="relative max-w-2xl">
+          <div class="intro-reveal mb-5 inline-flex items-center gap-2 rounded-full border border-sky-300/20 bg-sky-300/[.08] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[.15em] text-sky-300"><span class="h-1.5 w-1.5 animate-pulse rounded-full bg-sky-300"></span> Private member library</div>
+          <h1 class="intro-reveal delay-1 display max-w-2xl text-4xl font-bold leading-[1.08] tracking-[-.04em] text-white sm:text-5xl lg:text-[62px]">Trade with clarity.<br><span class="bg-gradient-to-r from-blue-400 to-sky-300 bg-clip-text text-transparent">Learn with confidence.</span></h1>
+          <p class="intro-reveal delay-2 mt-5 max-w-xl text-[15px] leading-7 text-slate-300 sm:text-base">Your edge starts with understanding. Explore practical market breakdowns, member training, and daily trade ideas—all in one place.</p>
+          <div class="mt-8 flex flex-wrap gap-3"><a href="#recordings" class="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-950/50 transition hover:bg-blue-500">Explore video library <span aria-hidden="true">→</span></a><a href="#packages" class="rounded-xl border border-white/15 bg-white/[.04] px-5 py-3 text-sm font-semibold text-slate-200 transition hover:bg-white/[.08]">View VIP packages</a></div>
+          <div class="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/10 pt-6 text-xs text-slate-400"><span class="flex items-center gap-2"><span class="text-sky-400">◈</span> Structured learning</span><span class="flex items-center gap-2"><span class="text-sky-400">◈</span> Real trade reviews</span><span class="flex items-center gap-2"><span class="text-sky-400">◈</span> Member-only access</span></div>
+        </div>
+      </div>
+    </section>
+<section id="packages" class="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+      <div class="mb-8 text-center"><div class="text-xs font-bold uppercase tracking-[.22em] text-sky-400">Your next step</div><h2 class="display mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Choose your VIP package</h2><p class="mx-auto mt-3 max-w-xl text-sm leading-6 text-slate-400">Choose a package to view payment details and send your payment screenshot.</p></div>
+      <div class="mx-auto grid max-w-7xl gap-5 md:grid-cols-3">
+        <article class="relative overflow-hidden rounded-3xl border border-fuchsia-300/25 bg-gradient-to-b from-[#26113a] via-[#140f2b] to-[#0b1930] p-6 shadow-xl shadow-fuchsia-950/20 sm:p-8"><div class="absolute -right-10 -top-12 h-40 w-40 rounded-full bg-fuchsia-500/15 blur-3xl"></div><div class="relative"><div class="text-xs font-bold uppercase tracking-[.2em] text-fuchsia-300">1 Month</div><div class="mt-4 flex items-end gap-2"><span class="display text-6xl font-bold tracking-tight text-white">$10</span><span class="mb-2 text-sm text-slate-400">/ month</span></div><div class="mt-3 inline-flex rounded-lg border border-fuchsia-300/25 bg-fuchsia-300/[.08] px-3 py-2 text-sm font-semibold text-fuchsia-100">LKR 3,360</div><div class="my-6 h-px bg-white/10"></div><ul class="space-y-3 text-sm text-slate-300"><li class="flex gap-2"><span class="text-fuchsia-300">✓</span> VIP channel membership for 1 month</li><li class="flex gap-2"><span class="text-fuchsia-300">✓</span> Daily signal updates and breakdowns</li><li class="flex gap-2"><span class="text-fuchsia-300">✓</span> Member training recordings</li></ul><button type="button" data-package-payment="1 Month VIP — $10" class="mt-7 flex w-full items-center justify-center gap-2 rounded-xl border border-fuchsia-300/30 bg-fuchsia-500/15 px-4 py-3.5 text-sm font-bold text-white transition hover:bg-fuchsia-500/25">Buy 1-month package <span>→</span></button></div></article>
+        <article class="relative overflow-hidden rounded-3xl border border-lime-300/25 bg-gradient-to-b from-[#172c1d] via-[#10251d] to-[#0b1930] p-6 shadow-xl shadow-lime-950/20 sm:p-8"><div class="absolute -right-10 -top-12 h-40 w-40 rounded-full bg-lime-400/15 blur-3xl"></div><div class="absolute right-5 top-5 rounded-full border border-lime-300/20 bg-lime-300/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-lime-200">Best value</div><div class="relative"><div class="text-xs font-bold uppercase tracking-[.2em] text-lime-300">5 Months</div><div class="mt-4 flex items-end gap-2"><span class="display text-6xl font-bold tracking-tight text-white">$30</span><span class="mb-2 text-sm text-slate-400">/ 5 months</span></div><div class="mt-3 inline-flex rounded-lg border border-lime-300/25 bg-lime-300/[.08] px-3 py-2 text-sm font-semibold text-lime-100">LKR 10,080</div><div class="my-6 h-px bg-white/10"></div><ul class="space-y-3 text-sm text-slate-300"><li class="flex gap-2"><span class="text-lime-300">✓</span> VIP channel membership for 5 months</li><li class="flex gap-2"><span class="text-lime-300">✓</span> Daily signal updates and breakdowns</li><li class="flex gap-2"><span class="text-lime-300">✓</span> Member training recordings</li></ul><button type="button" data-package-payment="5 Months VIP — $30" class="mt-7 flex w-full items-center justify-center gap-2 rounded-xl bg-lime-500 px-4 py-3.5 text-sm font-bold text-[#0b1b11] transition hover:bg-lime-400">Buy 5-month package <span>→</span></button></div></article>
+      <article class="relative overflow-hidden rounded-3xl border border-sky-300/25 bg-gradient-to-b from-[#112d45] via-[#102033] to-[#0b1930] p-5 shadow-xl shadow-sky-950/20 sm:p-6"><div class="absolute -right-10 -top-12 h-40 w-40 rounded-full bg-sky-400/15 blur-3xl"></div><div class="relative"><div class="text-xs font-bold uppercase tracking-[.2em] text-sky-300">Advanced training</div><h3 class="display mt-2 text-2xl font-bold text-white">Mentorship</h3><div class="mt-3 flex items-end gap-2"><span class="display text-5xl font-bold text-white">$32</span><span class="mb-2 text-sm text-slate-400">one-time</span></div><h4 class="mt-5 font-semibold text-white">What you will learn</h4><ul class="mt-3 space-y-2 text-sm leading-5 text-slate-300"><li>Footprint reading: read real-time order flow, buy/sell pressure, and volume at the source.</li><li>Price action: understand market structure, trends, liquidity zones, and key reversals.</li><li>Volume analysis: use FRVP, VWAP, tick volume, and CVD to confirm market strength.</li><li>Auction Market Theory (AMT) and Liquidity &amp; Aggression Tools (LAT) for smarter entries.</li><li>Market profile: identify POC, value areas, high/low volume nodes, and market direction.</li><li>Liquidity and heatmaps to track liquidity pools and plan precise entries and exits.</li><li>Absorption and exhaustion signals to spot potential reversals early.</li><li>Money and risk management to protect capital and manage risk consistently.</li></ul><div class="mt-5 grid gap-3 sm:grid-cols-3"><div class="rounded-xl border border-sky-300/15 bg-sky-300/[.05] p-3 text-center"><div class="font-semibold text-sky-300">Live market practice</div><p class="mt-1 text-xs text-slate-400">Live analysis and real-time trading examples.</p></div><div class="rounded-xl border border-sky-300/15 bg-sky-300/[.05] p-3 text-center"><div class="font-semibold text-sky-300">Discipline</div><p class="mt-1 text-xs text-slate-400">Follow the plan, trust the process, and stay consistent.</p></div><div class="rounded-xl border border-amber-300/15 bg-amber-300/[.05] p-3 text-center"><div class="font-semibold text-amber-300">Success</div><p class="mt-1 text-xs text-slate-400">Consistent strategy leads to consistent results.</p></div></div><button type="button" data-package-payment="Mentorship — $32" class="mt-6 flex w-full items-center justify-center gap-2 rounded-xl bg-sky-500 px-4 py-3.5 text-sm font-bold text-[#07162f] transition hover:bg-sky-400">Buy Mentorship <span>→</span></button></div></article>      </div><p class="mt-5 text-center text-xs text-slate-500">Message the PrimeX Global support team on Telegram to join.</p>
+    </section>
+<section id="recordings" class="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+      <div class="mb-7 text-center"><div class="text-xs font-bold uppercase tracking-[.22em] text-sky-400">Members only</div><h2 class="display mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Video recordings</h2><p class="mx-auto mt-2 max-w-xl text-sm leading-6 text-slate-400">Enter your VIP access code to reveal the private Telegram channel link.</p></div>
+      <div class="glass mx-auto max-w-xl rounded-3xl p-6 sm:p-8"><div class="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-2xl border border-sky-300/20 bg-sky-300/[.08] text-2xl text-sky-300">▣</div><form id="accessForm"><label for="accessCode" class="mb-2 block text-sm font-semibold text-white">VIP access code</label><div class="flex gap-2"><input id="accessCode" class="field text-center text-xl tracking-[.35em]" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="••••" autocomplete="one-time-code" required><button class="shrink-0 rounded-xl bg-blue-600 px-5 text-sm font-semibold text-white transition hover:bg-blue-500" type="submit">Continue</button></div></form><p id="accessError" class="mt-3 hidden text-sm text-rose-300" role="alert">The code is incorrect. Please check it and try again.</p><div id="accessSuccess" class="mt-5 hidden rounded-2xl border border-emerald-300/20 bg-emerald-300/[.07] p-5 text-center"><div class="text-emerald-300">Access approved</div><p class="mt-2 text-sm text-slate-300">Open the private Telegram channel to watch the recordings.</p><a id="channelLink" href="#" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex items-center gap-2 rounded-xl bg-emerald-400 px-5 py-3 text-sm font-bold text-[#06150e] transition hover:bg-emerald-300">Open VIP Telegram channel <span>↗</span></a></div><p class="mt-5 border-t border-white/[.07] pt-4 text-center text-xs leading-5 text-slate-500">Use the access code given to you by the channel administrator.</p></div>
+    </section>
+
+    <section id="about" class="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8"><div class="grid gap-5 md:grid-cols-3"><div class="glass rounded-2xl p-5"><div class="mb-4 grid h-10 w-10 place-items-center rounded-xl bg-blue-500/15 text-lg text-sky-300">◎</div><h3 class="font-semibold text-white">Learn the process</h3><p class="mt-2 text-sm leading-6 text-slate-400">Build a repeatable approach with focused lessons and clear market context.</p></div><div class="glass rounded-2xl p-5"><div class="mb-4 grid h-10 w-10 place-items-center rounded-xl bg-blue-500/15 text-lg text-sky-300">↗</div><h3 class="font-semibold text-white">Review real setups</h3><p class="mt-2 text-sm leading-6 text-slate-400">Breakdowns help you understand the reasoning behind a plan, win or lose.</p></div><div class="glass rounded-2xl p-5"><div class="mb-4 grid h-10 w-10 place-items-center rounded-xl bg-blue-500/15 text-lg text-sky-300">⌁</div><h3 class="font-semibold text-white">Trade responsibly</h3><p class="mt-2 text-sm leading-6 text-slate-400">Education and analysis only. Trading involves risk; always make independent decisions.</p></div></div></section>
+  </main>
+  <div class="fixed bottom-5 right-5 z-50 flex flex-col gap-3" aria-label="Social links">
+    <a href="https://chat.whatsapp.com/JRAXknm2GUOE5qWv7YlDaq?s=cl&amp;p=i&amp;mlu=4&amp;ilr=4&amp;iam=2" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp" class="grid h-12 w-12 place-items-center rounded-full bg-emerald-500 text-xl font-bold text-white shadow-lg">W</a>
+    <a href="https://www.tiktok.com/@gct_owner?_r=1&amp;_t=ZS-9BOjrFsPTXh" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok" class="grid h-12 w-12 place-items-center rounded-full bg-black text-xl font-bold text-white shadow-lg">♪</a>
+    <a href="https://t.me/ApexGlobal2" target="_blank" rel="noopener noreferrer" aria-label="Telegram" title="Telegram" class="grid h-12 w-12 place-items-center rounded-full bg-sky-500 text-xl font-bold text-white shadow-lg">➤</a>
+  </div><div id="paymentModal" class="modal-backdrop fixed inset-0 z-[100] hidden items-center justify-center overflow-y-auto p-4" role="dialog" aria-modal="true" aria-labelledby="paymentTitle">
+  <div class="glass relative my-auto w-full max-w-xl rounded-3xl p-6 sm:p-8">
+    <button id="closePaymentModal" type="button" aria-label="Close payment details" class="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full border border-white/10 text-xl text-slate-300 hover:bg-white/10">×</button>
+    <div class="text-center"><div class="text-xs font-bold uppercase tracking-[.22em] text-sky-400">Payment details</div>
+      <h2 id="paymentTitle" class="display mt-2 text-2xl font-bold text-white">Payment details — Mentorship — $32</h2>
+      <p class="mt-2 text-sm text-slate-400">Make the payment using one of these options.</p></div>
+    <div class="mt-5 grid gap-3 sm:grid-cols-2">
+      <div class="rounded-2xl border border-white/10 bg-white/[.03] p-4"><h3 class="font-semibold text-white">Bank transfer</h3><p class="mt-2 text-sm leading-6 text-slate-300">Sampath Bank<br>Account name: KPSD Silva<br>Branch: Kalutara<br>Account No: 105052712382</p></div>
+      <div class="rounded-2xl border border-white/10 bg-white/[.03] p-4"><h3 class="font-semibold text-white">Binance Pay</h3><p class="mt-2 text-sm text-slate-300">Binance Pay ID: <strong class="text-white">1118668047</strong></p></div>
+    </div>
+    <p class="mt-4 text-center text-sm text-slate-300">Please include your name in the payment remarks.</p>
+    <a href="https://t.me/PrimeX_Support1" target="_blank" rel="noopener noreferrer" class="mt-5 flex items-center justify-center gap-2 rounded-xl bg-sky-500 px-5 py-3.5 text-sm font-bold text-[#07162f] transition hover:bg-sky-400">Send payment screenshot on Telegram <span>↗</span></a>
+  </div>
+</div>
+  <footer class="border-t border-white/[.07] px-4 py-6 text-center text-xs text-slate-500">© <span id="year"></span> Primex Global · Educational content only. Not financial advice.</footer>
+
+  <script>
+    // මෙම අංක වෙබ් පිටුවේ කේතයේ ඇති නිසා, මෙය සරල පිවිසුම් තිරයක් පමණි. සැබෑ ආරක්ෂාවක් නොවේ.
+    const VALID_CODES = new Set(['1596', '8756', '7896', '2536', '2581']);
+    // මෙතැන ඔබේ පුද්ගලික Telegram නාලිකාවේ ආරාධනා සබැඳිය දාන්න.
+    const TELEGRAM_CHANNEL_LINK = 'https://t.me/+i9E-y1e2XoNiZDc9';
+    const paymentModal = document.getElementById('paymentModal');
+    document.querySelectorAll('[data-package-payment]').forEach(button => button.addEventListener('click', () => {
+      document.getElementById('paymentTitle').textContent = 'Payment details — ' + button.dataset.packagePayment;
+      paymentModal.classList.remove('hidden');
+      paymentModal.classList.add('flex');
+    }));
+    document.getElementById('closePaymentModal').addEventListener('click', () => {
+      paymentModal.classList.add('hidden');
+      paymentModal.classList.remove('flex');
+    });
+    paymentModal.addEventListener('click', event => {
+      if (event.target === paymentModal) {
+        paymentModal.classList.add('hidden');
+        paymentModal.classList.remove('flex');
+      }
+    });
+    const form = document.getElementById('accessForm');
+    const input = document.getElementById('accessCode');
+    const error = document.getElementById('accessError');
+    const success = document.getElementById('accessSuccess');
+    const link = document.getElementById('channelLink');
+    const linkReady = /^https:\/\/t\.me\/(?:\+|joinchat\/|c\/|[A-Za-z0-9_]+\/)/i.test(TELEGRAM_CHANNEL_LINK);
+    if (!linkReady) link.classList.add('hidden');
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const entered = input.value.trim();
+      const valid = VALID_CODES.has(entered);
+      error.classList.toggle('hidden', valid);
+      success.classList.toggle('hidden', !valid);
+      if (valid && linkReady) link.href = TELEGRAM_CHANNEL_LINK;
+      if (valid) success.querySelector('p').textContent = linkReady
+        ? 'අංකය නිවැරදියි. පහත බොත්තම ඔබලා පුද්ගලික Telegram නාලිකාවට යන්න.'
+        : 'අංකය නිවැරදියි. නාලිකා සබැඳිය තවම කේතයට එක් කර නැහැ. පරිපාලකයාට සබැඳිය එක් කරන්න කියන්න.';
+    });
+    input.addEventListener('input', () => { input.value = input.value.replace(/\D/g, '').slice(0, 4); });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
